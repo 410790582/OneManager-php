@@ -941,13 +941,12 @@ function fetch_files($path = '/')
         // https://docs.microsoft.com/en-us/graph/api/driveitem-get?view=graph-rest-1.0
         // https://docs.microsoft.com/zh-cn/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http
         // https://developer.microsoft.com/zh-cn/graph/graph-explorer
-        $pos = strrpos($path, '/');
-	    error_log( 'pos'.$pos.'
-	    path'.$path );
+        //$pos = strrpos($path, '/');
+	
         //if ($pos>1) {
-            $parentpath = substr($path, 0, $pos);
-            $filename = strtolower(substr($path, $pos+1));
-		//error_log( json_encode(getcache('path_' . $parentpath. '/'), JSON_PRETTY_PRINT) );
+	    $pos = splitlast($path, '/');
+            $parentpath = $pos[0];
+            $filename = $pos[1];
             if ($parentfiles = getcache('path_' . $parentpath. '/')) {
                 if (isset($parentfiles['children'][$filename]['@microsoft.graph.downloadUrl'])) {
                     if (in_array(splitlast($filename,'.')[1], $exts['txt'])) {
