@@ -942,8 +942,9 @@ function fetch_files($path = '/')
         // https://docs.microsoft.com/zh-cn/graph/api/driveitem-put-content?view=graph-rest-1.0&tabs=http
         // https://developer.microsoft.com/zh-cn/graph/graph-explorer
         $pos = strrpos($path, '/');
-	    error_log( 'pos'.$pos );
-        if ($pos>1) {
+	    error_log( 'pos'.$pos.'
+	    path'.$path );
+        //if ($pos>1) {
             $parentpath = substr($path, 0, $pos);
             $filename = strtolower(substr($path, $pos+1));
 		error_log( json_encode(getcache('path_' . $parentpath. '/'), JSON_PRETTY_PRINT) );
@@ -959,7 +960,7 @@ function fetch_files($path = '/')
                     return $parentfiles['children'][$filename];
                 }
             }
-        }
+        //}
         $url = $_SERVER['api_url'];
         if ($path !== '/') {
             $url .= ':' . $path;
