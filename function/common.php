@@ -947,7 +947,11 @@ function fetch_files($path = '/')
 	    $pos = splitlast($path, '/');
             $parentpath = $pos[0];
             $filename = $pos[1];
+	    echo 'path:'.$path.'
+	    parepath:'.$parentpath.'
+	    filename:'.$filename;
             if ($parentfiles = getcache('path_' . $parentpath. '/')) {
+		    echo 'a';
                 if (isset($parentfiles['children'][$filename]['@microsoft.graph.downloadUrl'])) {
                     if (in_array(splitlast($filename,'.')[1], $exts['txt'])) {
                         if (!(isset($parentfiles['children'][$filename]['content'])&&$parentfiles['children'][$filename]['content']['stat']==200)) {
