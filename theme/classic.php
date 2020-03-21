@@ -109,6 +109,7 @@
         </div>
     </div>
 <?php }
+	echo json_encode($files['children'], JSON_PRETTY_PRINT);
     if ($files) {
         if (isset($files['children']['head.md'])) { ?>
     <div class="list-wrapper" id="head-div">
