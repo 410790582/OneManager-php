@@ -859,7 +859,7 @@ function splitlast($str, $split)
         $tmp[1] = substr($str, $pos+1);
     } else {
         $tmp[0] = '';
-        $tmp[1] = $str;
+        $tmp[1] = substr($str, 1);
     }
     return $tmp;
 }
