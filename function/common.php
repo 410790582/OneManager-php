@@ -945,7 +945,7 @@ function fetch_files($path = '/')
         if ($pos>1) {
             $parentpath = substr($path, 0, $pos);
             $filename = strtolower(substr($path, $pos+1));
-		echo json_encode(getcache('path_' . $parentpath. '/'), JSON_PRETTY_PRINT);
+		error_log( json_encode(getcache('path_' . $parentpath. '/'), JSON_PRETTY_PRINT) );
             if ($parentfiles = getcache('path_' . $parentpath. '/')) {
                 if (isset($parentfiles['children'][$filename]['@microsoft.graph.downloadUrl'])) {
                     if (in_array(splitlast($filename,'.')[1], $exts['txt'])) {
